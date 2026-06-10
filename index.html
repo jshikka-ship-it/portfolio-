@@ -147,7 +147,33 @@
   .pm-images img {
     width: 100%; border: 1px solid var(--rule);
     border-radius: var(--radius);
+    cursor: zoom-in;
+    transition: opacity .15s;
   }
+  .pm-images img:hover { opacity: .85; }
+
+  /* ── 라이트박스 ── */
+  .lightbox {
+    display: none;
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(0,0,0,.85);
+    align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 92vw; max-height: 90vh;
+    border-radius: var(--radius);
+    box-shadow: 0 8px 40px rgba(0,0,0,.6);
+    object-fit: contain;
+  }
+  .lightbox-close {
+    position: fixed; top: 20px; right: 28px;
+    color: #fff; font-size: 32px; cursor: pointer;
+    line-height: 1; opacity: .8;
+    transition: opacity .15s;
+  }
+  .lightbox-close:hover { opacity: 1; }
 
   /* ── 마지막 ── */
   .closing {
@@ -190,9 +216,10 @@
 <nav>
   <div class="wrap">
     <a href="#about">소개</a>
-    <a href="#project01">워디 시스템</a>
-    <a href="#project02">LMS 기획</a>
-    <a href="#project03">PM 관리</a>
+    <a href="#project01">학습 콘텐츠 기획</a>
+    <a href="#project02">대화 시스템 기획</a>
+    <a href="#project03">LMS 기획</a>
+    <a href="#project04">프로젝트 관리</a>
   </div>
 </nav>
 
@@ -255,14 +282,6 @@
             </div>
             <span class="file-arrow">↓</span>
           </a>
-          <a class="file-link" href="대화시스템_기획서.pdf" target="_blank">
-            <div class="file-icon pdf">PDF</div>
-            <div class="file-meta">
-              <div class="file-name">대화시스템_기획서.pdf</div>
-              <div class="file-desc">대화 액션 시스템 기획서 (Reading / Writing / Picking)</div>
-            </div>
-            <span class="file-arrow">↓</span>
-          </a>
         </div>
       </div>
     </div>
@@ -279,7 +298,40 @@
     <div class="project">
       <div class="project-header">
         <span class="project-num">02</span>
-        <span class="project-title">LMS 플랫폼 기획 — Kidsloop 웹-앱 연동</span>
+        <span class="project-title">대화 시스템 기획</span>
+        <span class="project-company">엔씨소프트 · 호두잉글리시 · 게임 기획자</span>
+      </div>
+
+      <div class="project-body">
+        <div class="project-desc">
+          <p>영어 학습 게임 호두잉글리시에서 NPC와의 대화를 통해 영어를 학습하는 대화 액션 시스템을 기획했습니다. Reading, Writing, Picking 세 가지 인터랙션 유형을 설계하고 각 유형별 플로우와 예외 처리를 정의했습니다.</p>
+        </div>
+
+        <div class="project-files">
+          <div class="files-label">기획서 원본</div>
+          <a class="file-link" href="대화시스템_기획서.pdf" target="_blank">
+            <div class="file-icon pdf">PDF</div>
+            <div class="file-meta">
+              <div class="file-name">대화시스템_기획서.pdf</div>
+              <div class="file-desc">대화 액션 시스템 기획서 (Reading / Writing / Picking)</div>
+            </div>
+            <span class="file-arrow">↓</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECT 03 ── -->
+<section id="project03">
+  <div class="wrap">
+    <div class="sec-label">Project 03</div>
+
+    <div class="project">
+      <div class="project-header">
+        <span class="project-num">03</span>
+        <span class="project-title">LMS 플랫폼 기획</span>
         <span class="project-company">키즈룹 · 프로덕트 매니저</span>
       </div>
 
@@ -289,10 +341,7 @@
           <ul>
             <li><strong>Integrated Assessment</strong> — 학급 전체 홈펀스터디 평가를 한 페이지에서 처리</li>
             <li><strong>Drawing Feedback</strong> — 교사가 학생 제출 이미지 위에 드로잉 피드백</li>
-            <li><strong>Learning Outcome Setting</strong> — LO별 자동 평가 임계값 설정 기능</li>
-            <li><strong>Adaptive Review</strong> — 교사 설정 → 학생 앱 실행 → 대시보드 결과 확인 플로우</li>
           </ul>
-          <p>Badanamu ESL 학습 미니게임 기획, 앱 다운로드부터 결제까지 온보딩 플로우 설계, 학부모 대시보드 디자인도 담당했습니다.</p>
         </div>
 
         <div class="project-files">
@@ -319,14 +368,14 @@
   </div>
 </section>
 
-<!-- ── PROJECT 03 ── -->
-<section id="project03">
+<!-- ── PROJECT 04 ── -->
+<section id="project04">
   <div class="wrap">
-    <div class="sec-label">Project 03</div>
+    <div class="sec-label">Project 04</div>
 
     <div class="project">
       <div class="project-header">
-        <span class="project-num">03</span>
+        <span class="project-num">04</span>
         <span class="project-title">PM / 프로젝트 관리</span>
         <span class="project-company">아키핀 · 키즈룹 · 총괄 PM</span>
       </div>
@@ -370,6 +419,34 @@
     </div>
   </div>
 </div>
+<!-- ── 라이트박스 ── -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightboxClose">✕</span>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+
+document.querySelectorAll('.pm-images img').forEach(img => {
+  img.addEventListener('click', () => {
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
 
 </body>
 </html>
